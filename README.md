@@ -1,0 +1,1 @@
+# curso-completo-de-vis-o-computacional-avancada-com-python
