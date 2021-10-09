@@ -1,6 +1,6 @@
 # Curso Completo de Visão Computacional Avançada com Python
 
-Nesse reposítorio estarão as aulas introdutórias do curso.
+Nesse reposítorio estarão as 8 aulas do curso, cada uma em uma pasta.
 
 Aula 1: Rastreamento de mão - Introdução
 
