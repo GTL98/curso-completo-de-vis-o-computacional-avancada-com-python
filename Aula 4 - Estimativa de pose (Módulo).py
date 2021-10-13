@@ -18,7 +18,7 @@ import time
 class DetectorPose:
     def __init__(self, modo=False, complexidade=1, suavidade_landmarks=True, segmentacao=False,
                  suavidade_segmentacao=True,
-                 deteccao_confianca=0.5, rastreamento_confianca=0.5, escala=40):
+                 deteccao_confianca=0.5, rastreamento_confianca=0.5):
         self.modo = modo
         self.complexidade = complexidade
         self.suavidade_landmarks = suavidade_landmarks
@@ -26,7 +26,6 @@ class DetectorPose:
         self.suavidade_segmentacao = suavidade_segmentacao
         self.deteccao_confianca = deteccao_confianca
         self.rastreamento_confianca = rastreamento_confianca
-        self.escala = escala
         
         # Pose
         self.mpPose = mp.solutions.pose
@@ -38,7 +37,7 @@ class DetectorPose:
         # Desenhar as landmarks
         self.mp_desenho = mp.solutions.drawing_utils
         
-    def encontrar_pose_camera(self, imagem, fps, desenho=True):
+    def encontrar_pose(self, imagem, fps, desenho=True):
         # Converter a cor da imagem (o Mediapipe usa somente imagens em RGB e o OpenCV captura em BGR)
         imagem_rgb = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
 
@@ -52,13 +51,10 @@ class DetectorPose:
                                                self.mpPose.POSE_CONNECTIONS,
                                          self.mp_desenho.DrawingSpec(color=(0, 0, 255)),
                                          self.mp_desenho.DrawingSpec(color=(0, 255, 0)))
-                
-        # Colcar o valor de FPS na tela
-        cv2.putText(imagem, str(int(fps)), (10, 40), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
 
         return imagem
                 
-    def encontrar_posicao_camera(self, imagem, desenho=True):
+    def encontrar_posicao(self, imagem, desenho=True):
         lista_landmark = []
         if self.resultados.pose_landmarks:
             for item, landmark in enumerate (self.resultados.pose_landmarks.landmark):
@@ -71,45 +67,7 @@ class DetectorPose:
     
         return lista_landmark
             
-    def encontrar_pose_video(self, imagem, fps, desenho=True):
-        # Redimensionar a escala dos vídeos se estiverem maiores do que a tela
-        altura = int(imagem.shape[0] * self.escala / 100)
-        largura = int(imagem.shape[1] * self.escala / 100)
-        dimensao = (largura, altura)
-
-        imagem_redimensionada = cv2.resize(imagem, dimensao, interpolation=cv2.INTER_AREA)
-
-        # Converter a cor da imagem (o Mediapipe usa somente imagens em RGB e o OpenCV captura em BGR)
-        imagem_rgb = cv2.cvtColor(imagem_redimensionada, cv2.COLOR_BGR2RGB)
-
-        # Resultado do processamento da imagem
-        self.resultados = self.pose.process(imagem_rgb)
-
-        # Colocar as landmarks no corpo
-        if self.resultados.pose_landmarks:
-            if desenho:
-                self.mp_desenho.draw_landmarks(imagem_redimensionada, self.resultados.pose_landmarks,
-                                               self.mpPose.POSE_CONNECTIONS,
-                                         self.mp_desenho.DrawingSpec(color=(0, 0, 255)),
-                                         self.mp_desenho.DrawingSpec(color=(0, 255, 0)))
-                
-        # Colocar o valor de FPS na tela
-        cv2.putText(imagem_redimensionada, str(int(fps)), (10, 40), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0),3)
-
-        return imagem_redimensionada
-    
-    def encontrar_posicao_video(self, imagem_redimensionada, desenho=True):
-        lista_landmark = []
-        if self.resultados.pose_landmarks:
-            for item, landmark in enumerate (self.resultados.pose_landmarks.landmark):
-                # Pegar o valor do pixel onde cada landmark está
-                altura, largura, canal = imagem_redimensionada.shape
-                cx, cy = int(landmark.x*largura), int(landmark.y*altura)
-                cv2.circle(imagem_redimensionada, (cx, cy), 5, (0, 0, 255), cv2.FILLED)
-
-        return lista_landmark
-    
-
+        
 def main(video=0):
     tempo_anterior = 0
     tempo_atual = 0
@@ -120,27 +78,21 @@ def main(video=0):
     
     while True:
         sucesso, imagem = cap.read()
-
-        video_str = str(video)
         
         # Configurar o FPS da captura
         tempo_atual = time.time()
         fps = 1 / (tempo_atual - tempo_anterior)
         tempo_anterior = tempo_atual
         
-        if '.mp4' in video_str:
-            imagem = detector.encontrar_pose_video(imagem, fps)
-            lista_landmark_video = detector.encontrar_posicao_video(imagem)
-            
-            #Mostrar imagem na tela
-            cv2.imshow('Imagem vídeo', imagem)
-            
-        else:
-            imagem = detector.encontrar_pose_camera(imagem, fps)
-            lista_landmark_camera = detector.encontrar_posicao_camera(imagem)
-            
-            # Mostrar imagem na tela
-            cv2.imshow('Imagem câmera', imagem)
+       
+        imagem = detector.encontrar_pose(imagem, fps)
+        lista_landmark = detector.encontrar_posicao(imagem)
+        
+        # Colcar o valor de FPS na tela
+        cv2.putText(imagem, str(int(fps)), (10, 40), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
+
+        # Mostrar imagem na tela
+        cv2.imshow('Imagem', imagem)
 
         # Terminar o loop
         if cv2.waitKey(1) & 0xFF == ord('s'):
@@ -153,4 +105,3 @@ def main(video=0):
     
 if __name__ == '__main__':
     main()
-
