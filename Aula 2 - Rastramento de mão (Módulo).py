@@ -62,8 +62,8 @@ class DetectorMao:
                     cv2.circle(imagem, (cx, cy), 15, (255, 0, 0), cv2.FILLED)
             
         return lista_landmark
-            
- 
+
+
 def main():
     tempo_anterior = 0
     tempo_atual = 0
