@@ -1,8 +1,8 @@
 # Curso Completo de Visão Computacional Avançada com Python
 
-Neste repositório estarão as aulas e os projetos feitos com o OpenCV e Mediapipe em Python.
+Neste repositório estarão as aulas feitas para aprender os frameworks OpenCV e Mediapipe em Python.
 
-As aulas estão divididas em 8 etapas na pasta **`Aulas`**, sendo que cada aula introdutória foi feita na IDE Jupyter e o módulo em Python. São elas:
+As aulas estão divididas em 8 etapas nesse diretório, sendo que cada aula introdutória foi feita na IDE Jupyter e o módulo em Python. São elas:
 
 - Aula 1: Rastreamento de mão - Introdução
 
@@ -20,17 +20,17 @@ As aulas estão divididas em 8 etapas na pasta **`Aulas`**, sendo que cada aula 
 
 - Aula 8: Malha de rosto - Módulo
 ##
-São 4 projetos feitos com o aprendizado das aulas e os faremos com os módulos da pasta **`Aulas`**. Os projetos estão presentes na pasta **`Projetos`**. São eles:
+Aleém disso, são 4 projetos feitos com o aprendizado das aulas e os faremos com os módulos desse diretório. Cada projeto terá o seu diretório. São eles:
 
-- Controle de Volume com Gestos
+- Controle de Volume com Gestos: link
 
-- Contador de Dedos
+- Contador de Dedos: link
 
-- Personal Trainer
+- Personal Trainer: link
 
-- Pintura Virtual
+- Pintura Virtual: link
 
-- Mouse Virtual
+- Mouse Virtual: link
 
 Curso completo no link: https://www.youtube.com/watch?v=01sAkU_NvOY
 
