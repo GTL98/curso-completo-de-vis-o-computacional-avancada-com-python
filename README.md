@@ -20,9 +20,9 @@ As aulas estão divididas em 8 etapas nesse diretório, sendo que cada aula intr
 
 - Aula 8: Malha de rosto - Módulo
 ##
-Aleém disso, são 4 projetos feitos com o aprendizado das aulas e os faremos com os módulos desse diretório. Cada projeto terá o seu diretório. São eles:
+Além disso, são 4 projetos feitos com o aprendizado das aulas e os faremos com os módulos desse diretório. Cada projeto terá o seu diretório. São eles:
 
-- Controle de Volume com Gestos: link
+- Controle de Volume com Gestos: https://github.com/GTL98/controle-de-volume-com-gestos
 
 - Contador de Dedos: link
 
