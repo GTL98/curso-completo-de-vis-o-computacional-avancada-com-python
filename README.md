@@ -24,7 +24,7 @@ Além disso, são 4 projetos feitos com o aprendizado das aulas e os faremos com
 
 - Controle de Volume com Gestos: https://github.com/GTL98/controle-de-volume-com-gestos
 
-- Contador de Dedos: link
+- Contador de Dedos: https://github.com/GTL98/contador_de_dedos
 
 - Personal Trainer: link
 
