@@ -37,7 +37,7 @@ class DetectorPose:
         # Desenhar as landmarks
         self.mp_desenho = mp.solutions.drawing_utils
         
-    def encontrar_pose(self, imagem, fps, desenho=True):
+    def encontrar_pose(self, imagem, desenho=True):
         # Converter a cor da imagem (o Mediapipe usa somente imagens em RGB e o OpenCV captura em BGR)
         imagem_rgb = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
 
