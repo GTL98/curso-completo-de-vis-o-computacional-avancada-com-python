@@ -85,7 +85,7 @@ def main(video=0):
         tempo_anterior = tempo_atual
         
        
-        imagem = detector.encontrar_pose(imagem, fps)
+        imagem = detector.encontrar_pose(imagem)
         lista_landmark = detector.encontrar_posicao(imagem)
         
         # Colcar o valor de FPS na tela
