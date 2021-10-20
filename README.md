@@ -26,7 +26,7 @@ Além disso, são 4 projetos feitos com o aprendizado das aulas e os faremos com
 
 - Contador de Dedos: https://github.com/GTL98/contador_de_dedos
 
-- Personal Trainer: link
+- Personal Trainer: https://github.com/GTL98/personal_trainer
 
 - Pintura Virtual: link
 
