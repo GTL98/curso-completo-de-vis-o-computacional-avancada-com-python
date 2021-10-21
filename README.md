@@ -30,7 +30,7 @@ Além disso, são 4 projetos feitos com o aprendizado das aulas e os faremos com
 
 - Pintura Virtual: https://github.com/GTL98/pintura_virtual
 
-- Mouse Virtual: link
+- Mouse Virtual: https://github.com/GTL98/mouse_virtual
 
 Curso completo no link: https://www.youtube.com/watch?v=01sAkU_NvOY
 
