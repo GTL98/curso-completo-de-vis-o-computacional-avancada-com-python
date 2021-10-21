@@ -28,7 +28,7 @@ Além disso, são 4 projetos feitos com o aprendizado das aulas e os faremos com
 
 - Personal Trainer: https://github.com/GTL98/personal_trainer
 
-- Pintura Virtual: link
+- Pintura Virtual: https://github.com/GTL98/pintura_virtual
 
 - Mouse Virtual: link
 
